@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Verification Result</title>
+    <style>
+        body { font-family: Arial, sans-serif; background:#1e1e1e; color:#fff; padding:40px; }
+        h1 { color:#f39c12; }
+        .grid { display:flex; gap:24px; }
+        .card { background:#2c2c2c; padding:16px; border-radius:12px; box-shadow:0 4px 10px rgba(0,0,0,0.5); }
+        img { max-width:200px; border-radius:8px; display:block; }
+        .score { margin-top:20px; font-size:20px; font-weight:bold; }
+    </style>
+</head>
+<body>
+    <h1>Verification Result</h1>
+    <div class="grid">
+        <div class="card">
+            <h3>Face 1</h3>
+            <img src="/uploads/{{file1}}" alt="Face 1">
+        </div>
+        <div class="card">
+            <h3>Face 2</h3>
+            <img src="/uploads/{{file2}}" alt="Face 2">
+        </div>
+    </div>
+    {% if similarity is not none %}
+    <p class="score">Similarity Score: {{ similarity }}</p>
+    {% else %}
+    <p class="score">⚠️ Siamese model not loaded. Place <code>siamese_model.h5</code> in project root.</p>
+    {% endif %}
+    <p><a href="/">← Try again</a></p>
+</body>
+</html>
